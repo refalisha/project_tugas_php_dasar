@@ -1,0 +1,182 @@
+<?php
+
+
+$mahasiswa = [
+
+[ 
+ "nim" => "25001",
+ "nama" => "Idha Marchelina",
+ "jurusan" => "Pendidikan Sistem dan Teknologi Informasi",
+ "email" => "idha@upi.edu",
+ "nilai" => 65
+],
+[
+ "nim" => "25002",
+ "nama" => "Refalisha Charman",
+ "jurusan" => "Pendidikan Sistem dan Teknologi Informasi",
+ "email" => "refalisha@upi.edu",
+ "nilai" => 90
+],
+[
+ "nim" => "25003",
+ "nama" => "Gendis Putri",
+ "jurusan" => "Pendidikan Sistem dan Teknologi Informasi",
+ "email" => "gendis@upi.edu",
+ "nilai" => 85
+],
+[
+ "nim" => "25004",
+ "nama" => "Velicia Putri",
+ "jurusan" => "Pendidikan Sistem dan Teknologi Informasi",
+ "email" => "velicia@upi.edu",
+ "nilai" => 45
+],
+[ 
+ "nim" => "25005",
+ "nama" => "Yusuf Suparno",
+ "jurusan" => "Pendidikan Sistem dan Teknologi Informasi",
+ "email" => "yusuf@upi.edu",
+ "nilai" => 75
+],
+
+
+];
+
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Tugas PHP Dasar</title>
+
+    <style>
+        body {
+            background-color : #f3f4f6;
+            font-family : Arial, sans-serif;
+        }
+
+        .card {
+            background-color: white;
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tombol {
+            background-color: #2563eb;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+
+    th, td {
+        border: 1px solid #e5e7eb;
+        padding: 12px;
+        text-align: left;
+    }
+
+
+    th {
+        background-color: #eaf1fd;
+    }
+
+    .lulus {
+        color: green;
+        font-weight: bold;
+    }
+    .tidak-lulus {
+        color: red;
+        font-weight: bold;
+    }
+
+</style>
+
+</head>
+<body>
+    <div class="card">
+        
+<div class="header">
+    <div>
+        <h3>Daftar Mahasiswa</h3>
+        <p>Mini website PHP Dasar</p>
+    </div>
+    <a href="form_pesan.php" class="tombol">Isi Form Pesan</a>
+</div>
+    
+    
+    <table>
+        <thead>
+            <tr>
+            <th>No</th>
+            <th>NIM</th>
+            <th>Nama</th>
+            <th>Jurusan</th>
+            <th>Nilai</th>
+            <th>Grade</th>
+            <th>Status</th>
+            <th>Detail</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $no =1; ?>
+            <?php foreach($mahasiswa as $data): ?>
+                <?php
+                if ($data["nilai"] >= 80){
+                    $grade = "A";
+                } elseif ($data["nilai"] >= 70) {
+                    $grade = "B";
+                }elseif ($data["nilai"] >= 60){
+                    $grade = "C";
+                }else {
+                    $grade = "D";
+                }
+
+                if ($data["nilai"] >= 70){
+                    $status = "Lulus";
+                    $warna = "lulus";
+                } else  {
+                    $status = "Tidak Lulus";
+                    $warna = "tidak-lulus";
+                }
+
+                ?>
+
+
+
+            <tr>
+                <td> <?= $no ?> </td>
+                <td> <?= $data["nim"] ?> </td>
+                <td> <?= $data["nama"] ?> </td>
+                <td> <?= $data["jurusan"] ?> </td>
+                <td><?= $data["nilai"]?> </td>
+                <td><?= $grade ?> </td> 
+                <td class="<?= $warna ?>"> <?= $status ?> </td>
+                <td><a href="detail.php?nim=<?= $data["nim"] ?>&nama=<?= $data["nama"] ?>&jurusan=<?= $data["jurusan"] ?>&email=<?= $data["email"] ?>&nilai=<?= $data["nilai"] ?>&grade=<?= $grade ?>&status=<?= $status ?>" class="tombol">Lihat Detail</a></td>
+            </tr>
+            <?php $no++; ?>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>
