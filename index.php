@@ -52,80 +52,23 @@ $mahasiswa = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Tugas PHP Dasar</title>
-
-    <style>
-        body {
-            background-color : #f3f4f6;
-            font-family : Arial, sans-serif;
-        }
-
-        .card {
-            background-color: white;
-            max-width: 1100px;
-            margin: 30px auto;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .tombol {
-            background-color: #2563eb;
-            color: white;
-            padding: 8px 14px;
-            border-radius: 5px;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-
-    th, td {
-        border: 1px solid #e5e7eb;
-        padding: 12px;
-        text-align: left;
-    }
-
-
-    th {
-        background-color: #eaf1fd;
-    }
-
-    .lulus {
-        color: green;
-        font-weight: bold;
-    }
-    .tidak-lulus {
-        color: red;
-        font-weight: bold;
-    }
-
-</style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"/>
 
 </head>
-<body>
-    <div class="card">
+<body  class="p-3 mb-2 bg-body-secondary">
+    <div class="container my-5 p-5 bg-white rounded shadow">
         
-<div class="header">
+<div class="d-flex justify-content-between align-items-center mb-4">
     <div>
         <h3>Daftar Mahasiswa</h3>
         <p>Mini website PHP Dasar</p>
     </div>
-    <a href="form_pesan.php" class="tombol">Isi Form Pesan</a>
+    <a href="form_pesan.php" class="btn btn-primary">Isi Form Pesan</a>
 </div>
     
     
-    <table>
-        <thead>
+    <table class="table table-bordered ">
+        <thead class="table-primary">
             <tr>
             <th>No</th>
             <th>NIM</th>
@@ -153,10 +96,10 @@ $mahasiswa = [
 
                 if ($data["nilai"] >= 70){
                     $status = "Lulus";
-                    $warna = "lulus";
+                    $warna = "text-success fw-bold";
                 } else  {
                     $status = "Tidak Lulus";
-                    $warna = "tidak-lulus";
+                    $warna = "text-danger fw-bold";
                 }
 
                 ?>
@@ -171,12 +114,14 @@ $mahasiswa = [
                 <td><?= $data["nilai"]?> </td>
                 <td><?= $grade ?> </td> 
                 <td class="<?= $warna ?>"> <?= $status ?> </td>
-                <td><a href="detail.php?nim=<?= $data["nim"] ?>&nama=<?= $data["nama"] ?>&jurusan=<?= $data["jurusan"] ?>&email=<?= $data["email"] ?>&nilai=<?= $data["nilai"] ?>&grade=<?= $grade ?>&status=<?= $status ?>" class="tombol">Lihat Detail</a></td>
+                <td><a href="detail.php?nim=<?= $data["nim"] ?>&nama=<?= $data["nama"] ?>&jurusan=<?= $data["jurusan"] ?>&email=<?= $data["email"] ?>&nilai=<?= $data["nilai"] ?>&grade=<?= $grade ?>&status=<?= $status ?>" class="btn btn-primary">Lihat Detail</a></td>
             </tr>
             <?php $no++; ?>
             <?php endforeach ?>
         </tbody>
     </table>
     </div>
+    
+
 </body>
 </html>
